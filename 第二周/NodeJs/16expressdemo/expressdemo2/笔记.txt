@@ -1,0 +1,19 @@
+		express  手动创建入门项目
+d Desktop
+mkdir expressdemo
+cd expressdemo
+ //全局安装依赖
+npm install express -g
+npm install -g expre-generator
+
+
+第二次创建项目并运行
+cd Desktop
+mkdir expressdemo
+cd expressdemo
+npm init
+npm install express --save
+
+在项目中新建 app.js 文件 写上简单的demo 代码
+
+node app.js

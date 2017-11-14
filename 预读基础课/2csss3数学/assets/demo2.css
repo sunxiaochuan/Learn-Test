@@ -1,0 +1,8 @@
+.test{
+	height: 150px;
+	width: 300px;
+	background: yellowgreen;
+	border-radius: 50px;
+	outline: 10px solid red;
+	/*box-shadow: 0 0 0 10px red;*/
+}

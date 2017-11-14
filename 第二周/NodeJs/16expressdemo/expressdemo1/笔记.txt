@@ -1,0 +1,33 @@
+		express  自动化创建项目
+参考网址：http://cnodejs.org/topic/5349a97f7b772966030012e9
+
+cd Desktop
+mkdir expressdemo
+cd expressdemo
+ //全局安装依赖
+npm install express -g
+npm install -g expre-generator
+//创建实例化项目
+express
+//安装配置里的所有依赖
+npm install
+//进入bin 文件 执行 www 此时 localhost:3000  项目已经在运行了
+cd bin
+node www 
+//实时监测到文件的变化
+supervisor www
+
+//在一级目录 启动项目的方法
+cd..
+ C:\Users\sunxiaochuan\Desktop\expressdemo     npm run start
+
+
+第二次创建项目并运行
+cd Desktop
+mkdir expressdemo
+cd expressdemo
+npm install express --save
+express
+y
+npm install
+npm run start

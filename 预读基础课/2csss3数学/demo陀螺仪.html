@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5 陀螺仪 + 摇一摇demo</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//deviceorientation 获取设备旋转角度的函数   手机输出  alpha beta gamma 三个角的度数
+	// window.addEventListener('deviceorientation',function(event) {
+	// 	console.log(event);
+	// 	document.write(event.alpha + '和' + event.beta + '和' + event.gamma)
+	// },true);
+	//compassneedscalibration  通知设备罗盘校准函数   需校准时才会 alert 
+	// window.addEventListener('compassneedscalibration',function(event){
+	// 	alert('您的罗盘需要校准'),
+	// 	event.pervrntDefault();
+	// },true);
+	// window.addEventListener("devicemotion", function(event) {
+	// 	console.log(event);
+	//    // 处理event.acceleration
+	//    console.log(event.acceleration);
+	//    //	x(y,z):设备在x(y,z)方向上的移动加速度值
+	//    //event.accelerationIncludingGravity
+	//    console.log(event.accelerationIncludingGravity);
+	//    //考虑了重力加速度后设备在x(y,z)
+	//    // event.rotationRate
+	//    console.log(event.rotationRate);
+	// 	//alpha,beta,gamma:设备绕x,y,z轴旋转的角度
+	// 	console.log(event.rotationRate.alpha + ' ' + event.rotationRate.beta + ' ' + event.rotationRate.gamma);
+	//   }, true);
+
+
+	//摇一摇 案例 
+	var speed = 30;//speed
+       	var x = y = z = lastX = lastY = lastZ = 0;
+       	function deviceMotionHandler(event) {
+       		window.addEventListener('devicemotion',function(event){
+       			console.log(event);
+                var acceleration =event.accelerationIncludingGravity;
+                x = acceleration.x;
+                y = acceleration.y;
+                z = acceleration.z;
+                console.log(x + '\n' +  y + '\n' + z + '\n');
+                if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed || Math.abs(z-lastZ) > speed) {
+                    //简单的摇一摇触发代码
+                    alert(1);
+                }
+       		},true);
+       		
+        	 };
+        	 setTimeout('deviceMotionHandler()',2000);
+	</script>
+</body>
+</html>

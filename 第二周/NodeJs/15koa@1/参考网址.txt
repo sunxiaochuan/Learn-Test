@@ -1,0 +1,20 @@
+http://koa.bootcss.com/    中文官网 版本较旧，了解即可
+
+Koa1(历史以了解为主)
+npm install koa@1--save
+http://koa.bootcss.com/#introduction ;  中文官网  Koa -- 基于 Node.js 平台的下一代 web 开发框架
+https://iojs.org/zh/index.html  该框架配合 iojs 
+运行   node --harmony koa.js
+             iojs koa.js
+
+
+Koa2(主流，主要学习掌握内容)
+npm install koa
+https://github.com/koajs/koa               github
+https://www.npmjs.com/package/koa    包的网址
+运行  直接 node koa.js
+
+
+https://github.com/koajs/examples
+
+https://github.com/peter-vilja/generator-koa

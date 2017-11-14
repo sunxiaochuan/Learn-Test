@@ -1,0 +1,3 @@
+Comet:基于 HTTP 长连接的服务器推送技术
+实现长链接的几种方法：后端实现 前端实现
+Datapush 文件夹需要放在 C:\xampp\htdocs  该目录下  开启 Apache

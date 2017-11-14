@@ -1,0 +1,1 @@
+http://www.jianshu.com/p/622a3549728a    HTML5—EventSource服务端推送事件

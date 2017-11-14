@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="test"></div>
+	<script type="text/javascript">
+	// var s = new $('.test');
+	// var q = $('.test');
+	// new 的话 s 能够访问jq的原型链上的所有方法
+	// 不 new 的话 q 也能访问jq原型链上的所有方法
+	//new jQuery
+
+	//1.构造函数 2.prototype 的方法
+	//new 第一步 返回一个 init 的函数   
+	//原型链上挂载了一个 init 的函数没有主动执行
+
+	// 下面解析上面jQ 所做的操作  jQ 这样做的目的是为了使 jQuery.fn.init 拥有jq原型链上的所有方法
+	(function (window,undefined) {
+		var jQuery = function(){
+			//默默的给做了一个 new jQuery()
+			return new jQuery.fn.init(selector,context);
+		}
+		jQuery.fn = jQuery.prototype = {
+			init:function(selector,context){
+
+			}
+		}
+		jQuery.fn.init.prototype = jQuery.fn;
+		//jQuery.fn.init.prototype = jQuery.fn = jQuery.prototype;
+		//jQuery.fn.init.prototype = jQuery.prototype;
+		//jQuery.fn.init = jQuery;  jQuery.fn.init  上面便有了 jq 原型链上的所有方法
+	})(window);
+
+		//$.fn  
+		//jQuery.fn.extend    写插件时经常使用 目的是将 extend  方法挂载到 jq 原型链上  使全局都可使用   jQuery.fn  =  jQuery.prototype
+		//jQuery.extend  则是将这个方法直接给了jQuery 对象
+		//
+		//示例1
+		jQuery.fn.extend{
+			a:function(){
+				console.log(123);
+			}
+		}
+		$('').a();// 123  $('') new 一个新的对象该对象拥有jq原型链上的所有方法  所以也会有新加的挂载在jQ 原型链上的方法 a()  
+
+		//示例 2
+		jQuery.extend{
+			a:function(){
+				console.log(123);
+			}
+		}
+		$.a();// 123 这个是将 extend 方法直接挂载在 jQ 对象上 与原型链无关
+
+
+		//链式调用
+		var s = {
+			a:function(){
+				console.log('first');
+				return this;
+			},
+			b:function(){
+				console.log('second');
+				return this;
+			},
+			c:function(){
+				console.log('three');
+				return this;
+			}
+		};
+		s.a().b().c();//s 调用了 b() 返回的 this 指向 s(this 谁调用的this就指谁)所以可以执行 b() 接着返回 s 执行 c()
+	</script>
+</body>
+</html>

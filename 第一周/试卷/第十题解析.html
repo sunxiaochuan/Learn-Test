@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var s = [];
+		var arr= s;
+		for (var i = 0;i<3;i++) {
+			var pusher ={
+				value:"item"+i
+			},tmp;
+			if(i!==2){
+				tmp = [];
+				pusher.children = tmp;
+			}
+			arr.push(pusher);
+			arr = tmp;
+		}
+		console.log(s[0]);
+		//经各位老铁的指点现实力分析一波
+		//顶部的是数组 按址传递  也就是修改了 arr s也会跟着变 除非 arr 修改指向的地址 
+
+		//第一次循环
+		//将 object pusher{ value:"item"+i, children:[]} push 给了 arr 数组  也相继改变了 s 此时的
+		// s  = [
+		// 	{ value:"item"+i,
+		// 	 children:[]
+		// 	}
+		// ]
+		//而后将 arr 改为按值传递 即与s无关  arr = tmp = [];此时的 arr [] 指向的是 tmp  且 pusher.children(这个pusher已经传入 s [] ,  s[0].children) 也指向的是 tmb [] 按址传递 且是相同的地址 arr = s[0].children -> tmb 所以 arr 改变  相应的 s[0].children 也会跟着改变
+
+		//第二次循环
+		//此时的 arr 就变成了上次循环之后修改的 指向 tmb 的 [], 给这个push 进去一个新的 object pusher 相当于是 给 s[0].children 也push进了这个对象 这个 pusher.chlidren （s[0].children.push(pusher)）
+		//修改了上次循环出的 arr  相同指向的 s[0].children 也会跟着改变 所以执行后的
+		// s= [
+		// 	{ 	value:"item0", 
+		// 		children:[ 
+		// 			{ value:"item1", children:[]}
+		// 		 ]
+		// 	}
+		// ]
+		// 而后又将 arr = tmb = [] 此时的tmb 又是一个新的tmb 指向   底部的 arr(重新赋值) 同样也使其指向了这个 tmb   arr = s[0].children[0].children -> tmb  arr 又被改变了  此时与 s[0].children[0].children 指向同一个 tmb []  这个arr 改变也会相应的影响到 s[0].children[0].children
+
+		//第三次循环
+		//给上次循环出的 arr push 进一个新的对象 pusher {value:'item2'}   相同指向的 s[0].children[0].children  也会 push 进去这个对象 所以此时的
+		// s= [
+		// 	{ 	value:"item0", 
+		// 		children:[ 
+		// 			{ value:"item1", children:[
+		// 				{value:"item2"}
+		// 				]
+		// 			}
+		// 		 ]
+		// 	}
+		// ]
+		// 总结一句话：每次新建的 tmb 将 之前循环的 chlidren 属性 与 arr 连了起来  arr  改变时相应的 上次定义的 pusher.children 属性也改变  因为指向的都是同一个 tmb
+	</script>
+</body>
+</html>

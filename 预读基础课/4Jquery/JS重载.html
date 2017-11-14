@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS重载</title>
+</head>
+<body>
+	<script type="text/javascript">
+	function addMethod(obj,name,f) {
+		var old = obj[name];//undefined  find0 find1
+		console.log(old + '\n');
+		console.log(f);
+		obj[name] = function(){
+			//判断 形参 与 实参的数量是否相等
+			if(f.length === arguments.length){
+				return f.apply(this,arguments);
+			}else{
+				return old.apply(this,arguments);//不匹配便会执行参数带入时保存的 old 上一个 obj[name] 方法 f 带入上个参数中的方法 例：此时执行的时 find2 不匹配 便会接着执行 old 上次定义的 find1 以此类推 find1 不匹配执行 find1 内部的 old  == find0   ......
+			}
+
+		}
+	}
+	var people = {
+		name:['张三','李四','王二麻']
+	}
+	var find0 = function(){
+		return this.name;
+	}
+	var find1 = function(name){
+		var arr = this.name;
+		for (var i = 0;i<arr.length; i++) {
+			if(arr[i] == name){
+				console.log(name+'在' + i + '位');
+			}
+		}
+	}
+	var find2 = function(name1,name2){
+		var arr = this.name;
+		for (var i = 0; i < arr.length; i++) {
+			if(arr[i] == name1){
+				console.log(name1+'在' + i + '位');
+			}
+			if(arr[i] == name2){
+				console.log(name2+'在' + i + '位');
+			}
+		}
+	}
+	addMethod(people,'find',find0);
+	addMethod(people,'find',find1);
+	addMethod(people,'find',find2);//这三个方法相当于是将 people.find 的方法一直重新赋值 但是每次赋值时 old 都是保存了相对于此时函数传入的参数 obj[name] 未在下面重新赋值也就是上次执行方法时赋的值   下面又给 people.find 重新赋了值   这样的话如果当前的形参与实参不匹配便会返回上一个 find 所对应的方法也就是相对于此时函数的 old 方法   此时就将上次执行 find (old)方法时所带入参数也一起带入执行了一遍 如果形参与实参还不匹配 便会执行此时执行的函数内部的 old 方法 即上一个 obj[name] 方法  old 所对应的方法是  undefined - find0 - find1  
+	console.log(people.find('张三','李四'));//如果 find2 形参与实参不匹配 执行顺序是从 find1 - find0 - undefined  简单来说：这次的不匹配就执行 内部的 old == 上次的定义 old 时赋予的方法 find0 还不匹配就再次执行此时函数中的 old ==  上次的undefined
+
+	</script>
+</body>
+</html>

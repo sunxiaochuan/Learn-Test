@@ -1,0 +1,11 @@
+		koa1 小实战
+参考网址:
+http://koa.bootcss.com/		koa入门教学
+https://github.com/koajs/examples	koajs github小实例
+https://www.npmjs.com/package/koa-router	koa-router   项目中控制路由
+
+cd Desktop
+mkdir koademo
+cd koademo
+npm init
+npm install koa@1 --save

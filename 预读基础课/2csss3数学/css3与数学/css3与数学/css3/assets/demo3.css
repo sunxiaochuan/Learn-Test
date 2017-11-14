@@ -1,0 +1,10 @@
+.test{
+	background: yellowgreen;
+	border-radius: .8rem;
+	padding: 1em;
+	box-shadow: 0 0 0 .34em green;
+	outline: .8em solid green;
+	height: 150px;
+	width: 300px;
+}
+/*简单来说 box-shadow 的距离数值为 (根号2 - 1 ) *  border-radius 的值     */

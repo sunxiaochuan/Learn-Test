@@ -1,0 +1,5 @@
+sublime:插件 主题 网址：http://www.jianshu.com/p/13fedee165f1
+	github：https://github.com/equinusocio/material-theme
+	下载：https://github.com/equinusocio/material-theme/releases/tag/v4.0.10
+	修改字体、以及字体大小
+	首选项 > 设置-用户 > "font_face":"Comic Sans MS",

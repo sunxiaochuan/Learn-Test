@@ -1,0 +1,61 @@
+1.概念ppt  tdd  bdd ddd
+2.测试的好处 测试的意义
+3.单元测试 e2e测试 接口service测试 压力测试  UI还原性 性能测试
+4.karma (jasmine 、PhantomJS(浏览器的JS的))   selenium-webdriver  backstop
+//扩展
+5.e2e->   js  nightwatch  f2etest(linux  基础的测试环境+windows server 2008浏览器)
+6.PhantomCSS(测试UI还原性)
+
+
+测试步骤：karma
+首要前提安装 node.js  Cmder(以管理员身份运行该软件)
+
+cd Desktop
+cd herotest
+npm init   -> 会在项目中自动新增一个文件:package.json
+
+在项目文件夹中创建文件:src->index.js   test->indes.spec.js
+
+开始装工具
+npm install -g karma 
+karma init  ->jasmine   ->no    ->PhantomJS   ->no -> 会在项目中自动新增一个文件:karma.conf.js
+
+更改 karma.conf.js   ->    files[
+	'./src/**/*.js',
+        './test/**/*.spec.js'
+]
+singleRun: true,
+修改index.js(es5语法)  indes.spec.js(jasmine语法 网址：https://jasmine.github.io/)
+
+npm install jasmine --save
+npm install karma-phantomjs-launcher --save
+(第二次操作好像并不需要再装这个就可以直接执行  karma start) npm insta  ll phantomjs --save ||   npm install PhantomJs --save
+
+karma start
+
+
+
+selenium-webdriver 
+
+cd -> 进入当前文件夹
+
+打开 npmjs.com 搜索 selenium-webdriver
+网址：https://www.npmjs.com/package/selenium-webdriver
+找到安装命令：npm install selenium-webdriver
+ 找到  geckodriver(.exe)  ->   geckodriver-v0.19.1-win64.zip   点击下载(下载链接：/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-win64.zip)   解压至项目文件夹将内部的 .exe文件拿出来放到项目顶层 多余的文件夹删除
+项目新建一个 e2e.js 文件  copy 官网上的使用代码:
+	const {Builder, By, Key, until} = require('selenium-webdriver');
+
+	let driver = new Builder()
+	    .forBrowser('firefox')
+	    .build();
+
+	driver.get('http://www.google.com/ncr');
+	driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
+	driver.wait(until.titleIs('webdriver - Google Search'), 1000);
+	driver.quit();
+修改上述代码的链接、name、title
+
+node e2e.js(node 版本需要去官网下载最新版本 msi 文件)
+
+

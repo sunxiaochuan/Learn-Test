@@ -1,0 +1,6 @@
+http://www.bootcdn.cn/jquery/		jquery 资源
+http://www.bootcdn.cn/bootstrap/		Bootstrap 资源
+http://blog.csdn.net/dszgf5717/article/details/50697686    swig
+http://www.expressjs.com.cn/guide/routing.html		expressjs
+http://v3.bootcss.com/  	Bootstrap 示例
+https://www.npmjs.com/package/mysql     mysql 包

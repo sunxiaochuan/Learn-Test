@@ -1,0 +1,4 @@
+参考网址：
+https://github.com/alexmingoia/koa-router
+https://www.npmjs.com/package/request-promise
+http://es6.ruanyifeng.com/#docs/promise

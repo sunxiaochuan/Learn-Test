@@ -1,0 +1,4 @@
+//路由的标准格式
+controller / action
+
+web/index.html

@@ -1,0 +1,3 @@
+http://www.expressjs.com.cnguideusing-template-engines.html
+
+http://www.expressjs.com.cn/starter/static-files.html   ÍÐ¹Ü¾²Ì¬ÎÄ¼þ

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	function test(data) {
+		console.log(data);
+	}
+	</script>
+	<script type="text/javascript" src="http://www.sss.com/index.php?callback=test">
+	if(callback){
+		callback({"data":123})；
+		test( {"data":123} );
+	}else{
+		{"data":123};
+	}
+	</script>
+</head>
+<body>
+	<img src="">
+	<script type="text/javascript">
+	//前端跨越有几种方案：
+	//img、iframe、script 常用标签	
+	// $.ajax({
+	// 	url:"http://www.ss.com",
+	// 	type:"jsonp",
+	// 	success:function (json) {
+	// 		// body...
+	// 	}
+	// });
+	// 测试一下手机网速 wabapp 页面 根据这个网速 可以给用户出一些网速比较慢的解决方案
+	// 直接跳转到简版 三button，图片、视频
+	var s = new Image();
+	var start = Date.now();
+	s.src = "http://www.baidu.com/s.gif";
+	s.onload = function  (argument) {
+		var end = Date.now();
+		t = end - start;
+		v = "1.1" / t = "kb/s";//0-1000 用文件大小(kb)除以加载时间 得出速度
+		988/100 =9.8;
+		var level = 10 - Math.flow(v / 100);//1
+	}
+	</script>
+</body>
+</html>

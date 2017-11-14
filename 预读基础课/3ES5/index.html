@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Js 闭包 + 变量提升</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var a = 25;
+	//()();为匿名函数(闭包)可自执行，不会被外部所污染，外部也不能访问到里面的值
+	(function () {
+		alert(a);//undefined
+		var a = 30;//JS 解析时会将var a;提升到函数的顶部，但是并不会赋值，赋值还是在这一行执行
+	})();
+	</script>
+</body>
+</html>

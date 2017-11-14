@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS 创建一个子类  必会知识</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//构造函数 写法
+		var s = function(color){
+			this.color = color
+		};
+		s.prototype.sail = function(){
+			console.log('我有一辆' + this.color + '色的汽车');
+		};
+
+		var s2 = function(color){
+			s.call(this,color);
+		};
+		var __por = Object.create(s.prototype);//Object.create() 方法会使用指定的原型对象及其属性去创建一个新的对象。
+		__por.constructor = 's2';
+		s2.prototype = __por;
+		var s3 = new s2('green');
+		s3.sail();//我有一辆green色的汽车
+	</script>
+</body>
+</html>

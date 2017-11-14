@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<h1>测试</h1>
+<script type="text/javascript">
+	//这个是需要后端实现的方法
+	//ajax 会直接把最后的结果吐出来所以要用原生的方法实现
+	// $.ajax({
+	// 	url:'data.php',
+	// 	dataType:'json',
+	// 	success:function(data) {
+	// 		console.log(data);
+	// 	}
+	// });
+
+	//前端实现的方法 
+	function coon() {
+		$.ajax({
+			url:'data.php',
+			dataType:'json',
+			success:function(data) {
+				console.log(data);
+				coon();
+			}
+		});
+	}
+	coon()
+</script>

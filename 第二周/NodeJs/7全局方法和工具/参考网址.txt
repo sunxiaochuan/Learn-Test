@@ -1,0 +1,2 @@
+http://www.runoob.com/nodejs/nodejs-global-object.html
+http://www.runoob.com/nodejs/nodejs-util.html

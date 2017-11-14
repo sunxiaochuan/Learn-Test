@@ -1,0 +1,81 @@
+首先在百度输入  mysql sever  下载该软件  安装时会建一个数据库
+再到 mysql 官网   https://www.mysql.com/   ->   DOWNLOADS  ->   Community (GPL) Downloads »   ->   MySQL Workbench  ->  MySQL Workbench 6.3.9  ->  Microsoft Windows   ->  Download   
+下载  MySQL Workbench
+打开 MW 进入 安装 mysql sever  时创建的数据库  输入密码
+
+数据库中命名潜规则：数据库名称以 db_ 开头   数据表名称以 _t 开头
+新建数据库：
+在左下角 SCHEMAS 下方的空白区域  鼠标右键  Create Schema  新建一个数据库  ->  写上 name  ->  Collation 选择 utf8-default-collation   ->   点击 右下角的 apply 按钮  -> 弹出一个弹出窗  ->  再次点击当前弹出窗的 右下角的 apply 按钮  -> 创建完成 关闭当前窗口
+
+
+在命令行下操作 mysql  
+先去系统设置全局变量    ->我的电脑 鼠标右键 选择 属性 -> 高级系统设置  ->  环境变量  ->  系统变量列表中找到 path  点击编辑  ->  将 mysql sever 安装目录下的bin文件夹目录 粘贴到变量值处  点击 确定 确定 确定
+cmd 输入 ：
+
+mysql -uroot - p     -> 启动 mysql 
+输入密码  ->  进入mysql 
+show databases;   ->  查看 mysql 中所以得数据库
+use db_test;   ->  使用 db_test 数据库(管理命令)
+
+MW 下的操作：
+数据库 db_test 显得文件的含义：
+Tables  数据表
+Views   视图
+Stored Procedures    数据库的存储过程
+ Functions   自己定义的一些函数
+
+ 创建数据表：
+ 选中 Tables 鼠标右键  Create Table  ->  t_studenty
+ 添加字段 
+ id       ->  INT   -> PK(唯一主键)  ->  NN(非空)  ->  AI(自动增长)   
+ name  ->  VARCHAR(40)  ->  NN 
+ birthdate   ->   DATE  ->  NN 
+ gender   ->  CHAR(1) ->  NN  ->  Comments:文本框内写注释(国际通用标准)：  
+ 男：M   
+ 女：F
+ calss_id   ->  INT  ->    NN
+点击 apply  再次点击  apply  点击左下角空白处刷新之后便会看到 t_student  数据表
+ 数据表的操作增删改查命令：
+ insert into
+delete
+update
+select
+
+鼠标选中 t_student  右键选中第一个选项往数据表中添加数据
+
+SELECT * FROM db_test.t_student
+WHERE gender='M';  查询语句：数据表中所有性别为男的列表
+SELECT count(*) FROM db_test.t_student
+WHERE gender='M';查询语句：数据表中所有性别为男的数量
+
+查询语句的一些常用函数  sql 语句中 -- 为注释的意思
+-- count()  求数量
+-- min()  	求最小值 年级越大
+-- max()	求最大值 年级越小
+-- sum()	求和
+-- sqrt()	求平方根
+-- rand()	随机数
+-- concat()	拼接字符串函数
+
+-- 筛选出生日期在1991到1993年之间的学生 的两种方法
+SELECT * FROM db_test.t_student
+WHERE birthdate >= '1991-01-01'
+AND birthdate <= '1993-12-31'
+
+SELECT * FROM db_test.t_student
+WHERE birthdate BETWEEN '1991-01-01' AND '1993-12-31'
+
+
+SELECT * FROM t_student
+WHERE name LIKE '%六'  
+'%六%'
+'六%'
+-- %叫通配符 代表任意字符
+
+
+-- 数据排序 默认情况下是从小到大  正序排列  ASC 可以被省略不写
+SELECT * FROM t_student
+ORDER BY birthdate ASC
+
+SELECT * FROM t_student
+ORDER BY birthdate DESC   -- DESC 意义是进行逆序排列

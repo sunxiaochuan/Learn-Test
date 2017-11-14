@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//demo1
+	(function (window,undefined) {
+		// do somethings
+		undefined = 45;
+		alert(undefined); 
+	})(window,undefined);//带参数自执行函数，将 window 和 undefined(可以不传因为默认的便是 undefined)，传入该匿名函数中，这个匿名函数是个闭包存储了 window 和 undefined 供函数内部使用，不会被外部的函数改变所影响，两个参数的作用域只存在于 这个匿名函数中    该方法的好处是利用闭包存储 window 这样的变量，方便函数内部使用时的查找时间
+	</script>
+</body>
+</html>
