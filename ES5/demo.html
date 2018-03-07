@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Proxy</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <table class="table table-bordered" id="table-test">
+        <tr>
+            <th>姓名</th>
+            <th>成绩</th>
+        </tr>
+        <tr>
+            <td>小明</td>
+            <td>47</td>
+        </tr>
+        <tr>
+            <td>小红</td>
+            <td>76</td>
+        </tr>
+    </table>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    	// $('#table-test tr td').click(function(e) {
+    	// 	var _value = $(this).html();
+    	// 	if($(this).find('input').length == 0){
+    	// 		var s = '<input type="text" value="'+ _value+'">';
+    	// 	$(this).html(s);
+    	// 	}
+    		
+    	// });
+    	// //给 input 绑定事件
+    	// $('#table-test tr td').on('keyup','input',function(e){
+    	// 	if(e.keyCode == 13){
+    	// 		var _input = $(e.target);
+    	// 		_input.parent('td').html(_input.val());
+    	// 	}
+    	// });
+
+
+    	var index = {
+    		init:function(){
+			this.render();
+			this.bind();
+    		},
+    		render:function(){
+			this.mytd = $('#table-test tr td');
+    		},
+    		bind:function(){
+    			var me = this;
+    			me.mytd.click($.proxy(me._do,this));
+    		},
+    		_do:function(e){
+    			e.stopPropagation();
+			var s = $(e.target);
+			var _value = s.html();
+			var _input = '<input type="text" value="'+ _value+'">';
+    			s.html(_input);
+    		}
+    	}
+    	index.init();
+    </script>
+</body>
+
+</html>
